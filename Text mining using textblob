@@ -1,0 +1,41 @@
+'''nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('brown')
+nltk.download('wordnet')'''
+
+from textblob import TextBlob
+from textblob import Word
+import nltk
+from textblob.wordnet import VERB,ADJ,ADV,NOUN
+
+blob = TextBlob("This could be a multiline text or paragraph copy from wiki or something else what ever you like. Good Bye")
+k=blob.correct()
+print(k)
+print("\nList of tuples containing word andits tag, noun, verbe, etc.:")
+print(blob.tags)
+print("\nWords that are used as nouns:")
+print(blob.noun_phrases)
+
+print("\nTokenizations (Sentences and Words):\n")
+print(blob.sentences)
+print("\n")
+
+print(blob.words)
+print("\n")
+
+print(blob.word_counts)
+print("\n")
+
+print("Sentiment Analysis of sentences:\n")
+for sentence in blob.sentences:
+     print(sentence.sentiment)
+
+print("\nWord Inflection and Lemmatizations:\n")
+w = Word("octopi")
+print(w.lemmatize())
+print("\n")
+w = Word("done")
+print( w.lemmatize("v"))
+print("\n")
+print( Word("Smart").definitions)
+print("\n")
