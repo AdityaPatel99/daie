@@ -1,0 +1,13 @@
+import numpy as np
+from sklearn.neural_network import MLPClassifier
+import sklearn.datasets as data
+from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
+dig = data.load_digits()
+x_train, x_test, y_train, y_test = train_test_split(dig.data, dig.target, test_size=0.33)
+nn = MLPClassifier(solver='sgd',hidden_layer_sizes=(50,), max_iter=500)
+nn.fit(x_train,y_train)
+print(nn)
+print("Training Score: ",nn.score(x_train,y_train))
+print("Testing Score: ",nn.score(x_test,y_test))
+plt.show()
